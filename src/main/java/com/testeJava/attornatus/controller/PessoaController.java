@@ -5,10 +5,11 @@ import com.testeJava.attornatus.dto.PessoaDTO;
 import com.testeJava.attornatus.service.PessoaService;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -34,13 +35,16 @@ public class PessoaController {
     }
 
     @PostMapping
-    public ResponseEntity<PessoaDTO> create(@RequestBody PessoaDTO dto){
+    public ResponseEntity<PessoaDTO> create(@RequestBody PessoaDTO dto,
+                                            UriComponentsBuilder uriBuilder){
         PessoaDTO pessoaDTO = service.create(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(dto);
+        URI endereco = uriBuilder.path("/pessoa/{id}").buildAndExpand(pessoaDTO.getId()).toUri();
+        return ResponseEntity.created(endereco).body(pessoaDTO);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<PessoaDTO> update(@PathVariable @NotNull Long id, @RequestBody PessoaDTO dto){
+    public ResponseEntity<PessoaDTO> update(@PathVariable @NotNull Long id,
+                                            @RequestBody PessoaDTO dto){
         dto = service.update(id, dto);
         return ResponseEntity.ok().body(dto);
     }

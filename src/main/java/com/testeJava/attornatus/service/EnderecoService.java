@@ -4,8 +4,6 @@ import com.testeJava.attornatus.dto.EnderecoDTO;
 import com.testeJava.attornatus.exceptions.DataBaseException;
 import com.testeJava.attornatus.exceptions.EnderecoNotFoundException;
 import com.testeJava.attornatus.model.Endereco;
-import com.testeJava.attornatus.exceptions.PessoaNotFoundException;
-import com.testeJava.attornatus.model.Tipo;
 import com.testeJava.attornatus.repository.EnderecoRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +11,13 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EnderecoService {
 
     @Autowired
     private EnderecoRepository repository;
+
 
     public List<Endereco> findAll(){
         return repository.findAll();
@@ -31,7 +29,6 @@ public class EnderecoService {
     }
 
     public Endereco create(Endereco endereco){
-        endereco.setTipo(Tipo.SECUNDARIO);
         return repository.save(endereco);
     }
 

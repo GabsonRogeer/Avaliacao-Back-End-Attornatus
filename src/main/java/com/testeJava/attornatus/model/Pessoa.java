@@ -1,16 +1,13 @@
 package com.testeJava.attornatus.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -30,8 +27,9 @@ public class Pessoa {
 
     @NotNull
     private LocalDate dataNascimento;
-    @OneToMany(cascade=CascadeType.PERSIST, mappedBy="pessoa")
+
     @JsonIgnore
-    private List<Endereco> enderecos = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.PERSIST, mappedBy="pessoa")
+    private List<Endereco> endereco = new ArrayList<>();
 
 }

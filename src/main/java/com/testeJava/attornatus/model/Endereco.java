@@ -18,7 +18,7 @@ public class Endereco {
     private Long cep;
     private Integer numero;
     private String cidade;
-    private Tipo tipo;
+    private Boolean principal;
     @ManyToOne(optional = false)
     private Pessoa pessoa;
 

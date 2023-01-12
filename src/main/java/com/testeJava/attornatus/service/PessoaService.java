@@ -4,7 +4,6 @@ import com.testeJava.attornatus.dto.PessoaDTO;
 import com.testeJava.attornatus.exceptions.DataBaseException;
 import com.testeJava.attornatus.model.Pessoa;
 import com.testeJava.attornatus.exceptions.PessoaNotFoundException;
-import com.testeJava.attornatus.model.Tipo;
 import com.testeJava.attornatus.repository.PessoaRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +37,7 @@ public class PessoaService {
 
     public PessoaDTO create(PessoaDTO dto){
         Pessoa pessoa = modelMapper.map(dto, Pessoa.class);
-        pessoa.getEnderecos().forEach(endereco -> endereco.setTipo(Tipo.PRINCIPAL));
-        pessoa.getEnderecos().forEach(endereco -> endereco.setPessoa(pessoa));
+        pessoa.getEndereco().forEach(endereco -> endereco.setPessoa(pessoa));
         Pessoa salvo = repository.save(pessoa);
         return modelMapper.map(pessoa, PessoaDTO.class);
     }

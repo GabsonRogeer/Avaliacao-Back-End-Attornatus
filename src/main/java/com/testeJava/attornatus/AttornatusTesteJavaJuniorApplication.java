@@ -8,5 +8,4 @@ public class AttornatusTesteJavaJuniorApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AttornatusTesteJavaJuniorApplication.class, args);
 	}
-
 }
