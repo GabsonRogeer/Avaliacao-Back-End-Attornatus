@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.testeJava</groupId>
-	<artifactId>Attornatus</artifactId>
+	<artifactId>attornatus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Attornatus Teste Java Junior</name>
 	<description>Teste técnico Attornatus para vaga de Desenvolvedor Java Junior - Gabson Portela</description>
