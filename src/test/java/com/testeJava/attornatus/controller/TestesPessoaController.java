@@ -1,4 +1,4 @@
-package com.testeJava.attornatus;
+package com.testeJava.attornatus.controller;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeClass;
  *
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class TestesPessoa {
+public class TestesPessoaController {
 
     @BeforeClass
     public static void setup() {
@@ -25,6 +25,16 @@ public class TestesPessoa {
         RestAssured.given()
                 .when()
                 .get("/pessoa")
+                .then()
+                .statusCode(200);
+    }
+
+    @Test
+    public void deveListarPessoasPorId(){
+
+        RestAssured.given()
+                .when()
+                .get("/pessoa/1")
                 .then()
                 .statusCode(200);
     }

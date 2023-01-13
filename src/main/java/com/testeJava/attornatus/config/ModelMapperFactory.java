@@ -5,10 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Configuracao {
+public class ModelMapperFactory {
 
     @Bean
     public ModelMapper getModelMapper(){
         return new ModelMapper();
     }
+
 }

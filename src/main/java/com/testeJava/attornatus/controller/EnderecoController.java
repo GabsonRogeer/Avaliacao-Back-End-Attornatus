@@ -2,7 +2,7 @@ package com.testeJava.attornatus.controller;
 
 import com.testeJava.attornatus.dto.EnderecoDTO;
 import com.testeJava.attornatus.model.Endereco;
-import com.testeJava.attornatus.service.EnderecoService;
+import com.testeJava.attornatus.service.impl.EnderecoService;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +39,7 @@ public class EnderecoController {
     public ResponseEntity<Endereco> create(@RequestBody Endereco endereco,
                                            UriComponentsBuilder uriBuilder){
         endereco = enderecoService.create(endereco);
-        URI uri = uriBuilder.path("/pessoa/{id}").buildAndExpand(endereco.getId()).toUri();
+        URI uri = uriBuilder.path("/endereco/{id}").buildAndExpand(endereco.getId()).toUri();
         return ResponseEntity.created(uri).body(endereco);
     }
 

@@ -2,7 +2,9 @@ package com.testeJava.attornatus.controller;
 
 
 import com.testeJava.attornatus.dto.PessoaDTO;
-import com.testeJava.attornatus.service.PessoaService;
+import com.testeJava.attornatus.service.impl.PessoaService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/pessoa")
+@Api(tags = "Pessoa Controller")
 public class PessoaController {
 
     @Autowired
@@ -28,6 +31,7 @@ public class PessoaController {
         return service.findAll();
     }
 
+    @ApiOperation(value = "Find By Id")
     @GetMapping(value = "/{id}")
     public ResponseEntity<PessoaDTO> findById(@PathVariable @NotNull Long id){
         PessoaDTO dto = service.findById(id);
