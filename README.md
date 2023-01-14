@@ -22,6 +22,8 @@ Usando Spring boot, crie uma API simples para gerenciar Pessoas. Esta API deve p
 - Banco de Dados H2 na porta :8080
 - Link da imagem da aplicação em docker: https://hub.docker.com/r/gabsonroger/test-dev-back-end-jr-attornatus
 
+``docker pull gabsonroger/test-dev-back-end-jr-attornatus``
+
 ## ENDPONITS
 ### Pessoa
 
