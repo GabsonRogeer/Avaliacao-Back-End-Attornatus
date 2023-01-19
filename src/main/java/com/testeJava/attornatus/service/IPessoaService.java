@@ -9,7 +9,7 @@ import java.util.List;
 public interface IPessoaService {
 
     /**
-     * Retorna todas as Pessoas que estão no banco de dados.
+     * Retorna t
      * @return Lista todas as Pessoas que estão salvas no Banco de Dados.
      */
     List<PessoaDTO> findAll();
